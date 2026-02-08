@@ -1,23 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { WagmiProvider, createConfig, http } from 'wagmi';
-import { mainnet, base, optimism } from 'wagmi/chains';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { injected } from 'wagmi/connectors';
 import { useAccount } from 'wagmi';
 
 const OWNER_ADDRESS = '0x6dA0a1784De1aBDDe1734bA37eCa3d560bf044c0';
-
-const config = createConfig({
-  chains: [mainnet, base, optimism],
-  connectors: [injected()],
-  transports: {
-    [mainnet.id]: http(),
-    [base.id]: http(),
-    [optimism.id]: http(),
-  },
-});
-
-const queryClient = new QueryClient();
 
 const styles = {
   container: {
@@ -103,10 +87,6 @@ const styles = {
     color: '#fff',
     fontWeight: '500',
   },
-  listValue: {
-    color: '#888',
-    fontFamily: 'monospace',
-  },
   badge: {
     background: 'rgba(229, 57, 53, 0.2)',
     color: '#e53935',
@@ -125,7 +105,7 @@ const styles = {
   },
 };
 
-function DashboardInner() {
+export default function DashboardContent() {
   const { address, isConnected } = useAccount();
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -150,7 +130,7 @@ function DashboardInner() {
     return (
       <div style={styles.accessDenied}>
         <h2 style={styles.accessDeniedTitle}>Connect Wallet</h2>
-        <p>Please connect your wallet to access the dashboard.</p>
+        <p>Please connect your wallet using the button above to access the dashboard.</p>
       </div>
     );
   }
@@ -233,15 +213,5 @@ function DashboardInner() {
         </div>
       </section>
     </div>
-  );
-}
-
-export default function DashboardContent() {
-  return (
-    <WagmiProvider config={config}>
-      <QueryClientProvider client={queryClient}>
-        <DashboardInner />
-      </QueryClientProvider>
-    </WagmiProvider>
   );
 }
