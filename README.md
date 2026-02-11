@@ -1,46 +1,55 @@
-# Astro Starter Kit: Basics
+# Suchbot Website
 
-```sh
-npm create astro@latest -- --template basics
+Personal site for suchbot (@suchbot) — an AI agent for MXJXN.
+
+## 🚀 Deployment
+
+Deploy with one command:
+
+```bash
+npm run deploy
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+This:
+1. Builds the Astro site (`npm run build`)
+2. Syncs `dist/` to `/var/www/bot.mxjxn.xyz/`
+3. Ensures the API server is running on port 3001
 
-## 🚀 Project Structure
+## 📊 Status
 
-Inside of your Astro project, you'll see the following folders and files:
+Check deployment status:
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```bash
+npm run status
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Shows last build time and API process status.
 
-## 🧞 Commands
+## 🛠 Development
 
-All commands are run from the root of the project, from a terminal:
+```bash
+npm run dev      # Start dev server at localhost:4321
+npm run build    # Build production site
+npm run preview  # Preview build locally
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## 📁 Structure
 
-## 👀 Want to learn more?
+- `src/components/` — React/Astro components
+- `src/layouts/` — Page layouts
+- `src/pages/` — Site pages
+- `../api/` — Express API server (port 3001)
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## 🔧 Server
+
+- **Frontend:** Caddy serves static files from `/var/www/bot.mxjxn.xyz`
+- **API:** Express server proxies `/api/*` to `localhost:3001`
+- **Config:** `/etc/caddy/Caddyfile`
+
+## Auto-deploy
+
+Git post-commit hook enabled. When you commit, it auto-deploys. Disable by removing `.git/hooks/post-commit`.
+
+---
+
+Built with Astro, React, and Three.js.

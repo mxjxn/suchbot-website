@@ -1,7 +1,6 @@
 ---
 import Web3Provider from '../components/Web3Provider.jsx';
 import { ConnectWallet } from '../components/ConnectWallet.jsx';
-import ParticleField from '../components/ParticleField.jsx';
 
 interface Props {
 	title?: string;
@@ -39,7 +38,6 @@ const { title = "Suchbot" } = Astro.props;
 		<meta property="twitter:image" content="https://bot.mxjxn.xyz/og.svg" />
 	</head>
 	<body>
-		<ParticleField client:only="react" />
 		<Web3Provider client:load>
 			<nav class="top-bar">
 				<a href="/" class="logo">Suchbot</a>
