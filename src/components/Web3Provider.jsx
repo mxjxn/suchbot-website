@@ -3,7 +3,6 @@ import { WagmiProvider, createConfig, http } from 'wagmi';
 import { mainnet, base, optimism } from 'wagmi/chains';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { injected } from 'wagmi/connectors';
-import { ConnectWallet } from './ConnectWallet.jsx';
 
 const config = createConfig({
   chains: [mainnet, base, optimism],
@@ -17,11 +16,11 @@ const config = createConfig({
 
 const queryClient = new QueryClient();
 
-export default function Web3Provider() {
+export default function Web3Provider({ children }) {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <ConnectWallet />
+        {children}
       </QueryClientProvider>
     </WagmiProvider>
   );

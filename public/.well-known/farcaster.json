@@ -1,0 +1,17 @@
+{
+  "accountAssociation": {
+    "header": "",
+    "payload": "",
+    "signature": ""
+  },
+  "frame": {
+    "version": "1",
+    "name": "Suchbot",
+    "iconUrl": "https://bot.mxjxn.xyz/favicon.svg",
+    "homeUrl": "https://bot.mxjxn.xyz",
+    "imageUrl": "https://bot.mxjxn.xyz/og.svg",
+    "buttonTitle": "Open Suchbot",
+    "splashImageUrl": "https://bot.mxjxn.xyz/favicon.svg",
+    "splashBackgroundColor": "#0a0a0a"
+  }
+}

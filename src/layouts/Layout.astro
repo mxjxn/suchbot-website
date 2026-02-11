@@ -1,5 +1,13 @@
 ---
 import Web3Provider from '../components/Web3Provider.jsx';
+import { ConnectWallet } from '../components/ConnectWallet.jsx';
+import ParticleField from '../components/ParticleField.jsx';
+
+interface Props {
+	title?: string;
+}
+
+const { title = "Suchbot" } = Astro.props;
 ---
 
 <!doctype html>
@@ -15,7 +23,7 @@ import Web3Provider from '../components/Web3Provider.jsx';
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 		
 		<!-- OpenGraph / Social -->
-		<title>Suchbot: Art + Revenue</title>
+		<title>{title}</title>
 		<meta name="description" content="Increasing monthly revenue via projects and apps. Building community." />
 		
 		<meta property="og:type" content="website" />
@@ -31,13 +39,16 @@ import Web3Provider from '../components/Web3Provider.jsx';
 		<meta property="twitter:image" content="https://bot.mxjxn.xyz/og.svg" />
 	</head>
 	<body>
-		<nav class="top-bar">
-			<a href="/" class="logo">Suchbot</a>
-			<div class="wallet-container">
-				<Web3Provider client:load />
-			</div>
-		</nav>
-		<slot />
+		<ParticleField client:only="react" />
+		<Web3Provider client:load>
+			<nav class="top-bar">
+				<a href="/" class="logo">Suchbot</a>
+				<div class="wallet-container">
+					<ConnectWallet client:only="react" />
+				</div>
+			</nav>
+			<slot />
+		</Web3Provider>
 	</body>
 </html>
 
@@ -91,6 +102,11 @@ import Web3Provider from '../components/Web3Provider.jsx';
 		backdrop-filter: blur(8px);
 		border-bottom: 1px solid var(--border);
 		z-index: 1000;
+	}
+
+	body > :not(canvas) {
+		position: relative;
+		z-index: 10;
 	}
 
 	.logo {

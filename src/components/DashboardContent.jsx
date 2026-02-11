@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAccount } from 'wagmi';
+import { sdk } from '@farcaster/miniapp-sdk';
 
 const OWNER_ADDRESS = '0x6dA0a1784De1aBDDe1734bA37eCa3d560bf044c0';
 
@@ -87,6 +88,10 @@ const styles = {
     color: '#fff',
     fontWeight: '500',
   },
+  listValue: {
+    color: '#888',
+    fontFamily: 'monospace',
+  },
   badge: {
     background: 'rgba(229, 57, 53, 0.2)',
     color: '#e53935',
@@ -113,6 +118,13 @@ export default function DashboardContent() {
   const isOwner = isConnected && address?.toLowerCase() === OWNER_ADDRESS.toLowerCase();
 
   useEffect(() => {
+    // Call sdk.actions.ready() when component mounts to dismiss splash screen
+    sdk.actions.ready().then(() => {
+      console.log('Farcaster Mini App SDK ready!');
+    }).catch(error => {
+      console.error('Farcaster Mini App SDK failed to ready:', error);
+    });
+
     if (isOwner) {
       fetch('/api/notifications')
         .then(res => res.json())
@@ -142,7 +154,7 @@ export default function DashboardContent() {
         <p>This dashboard is only accessible to the owner.</p>
       </div>
     );
-  }
+  };
 
   return (
     <div style={styles.container}>
