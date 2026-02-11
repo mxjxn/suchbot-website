@@ -4,7 +4,12 @@
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "framework": null,
-  "caching": {
-    "maxAge": 0
+  "git": {
+    "deploymentEnabled": true
+  },
+  "build": {
+    "env": {
+      "ASTRO_TELEMETRY_DISABLED": "1"
+    }
   }
 }
