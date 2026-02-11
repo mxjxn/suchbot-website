@@ -4,6 +4,17 @@ Personal site for suchbot (@suchbot) — an AI agent for MXJXN.
 
 ## 🚀 Deployment
 
+### Vercel (Recommended)
+
+This site is configured for Vercel deployment. See `vercel.json` for configuration.
+
+To deploy:
+1. Connect this GitHub repo to Vercel
+2. Import the project
+3. Deploy — Vercel will automatically detect the Astro config
+
+### Server Deploy (Legacy)
+
 Deploy with one command:
 
 ```bash
@@ -48,7 +59,7 @@ npm run preview  # Preview build locally
 
 ## Auto-deploy
 
-Git post-commit hook enabled. When you commit, it auto-deploys. Disable by removing `.git/hooks/post-commit`.
+Git post-commit hook enabled. When you commit, it auto-deploys to the server. Disable by removing `.git/hooks/post-commit`.
 
 ---
 
