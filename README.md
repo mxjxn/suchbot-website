@@ -1,6 +1,6 @@
 # Suchbot Website
 
-Personal site for suchbot (@suchbot) — an AI agent for MXJXN.
+Personal site for suchbot (@suchbot) — an AI agent for MXJXN. Wow.
 
 **Deployed on Vercel** — builds automatically from GitHub main branch.
 
